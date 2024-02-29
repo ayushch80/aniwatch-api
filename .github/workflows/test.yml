@@ -94,7 +94,8 @@ jobs:
 
       - name: Inject blob into binary
         run: |
-            runas /user:Administrator postject build/server-win.exe NODE_SEA_BLOB sea-prep.blob --sentinel-fuse NODE_SEA_FUSE_fce680ab2cc467b6e072b8b5df1996b2
+            Start-Process wpr -verb runAs -Args "-start GeneralProfile"
+            postject build/server-win.exe NODE_SEA_BLOB sea-prep.blob --sentinel-fuse NODE_SEA_FUSE_fce680ab2cc467b6e072b8b5df1996b2
 
       - name: Commit and push build directory
         run: |
