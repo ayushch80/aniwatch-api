@@ -89,6 +89,9 @@ jobs:
       - name: Copy node binary to build directory
         run: node -e "require('fs').copyFileSync(process.execPath, 'server-win.exe')" 
 
+      - name: Remove signature
+        run: signtool/signtool remove /s server-win.exe
+
       - name: Inject blob into binary
         run: npx postject build/server-win.exe NODE_SEA_BLOB sea-prep.blob --sentinel-fuse NODE_SEA_FUSE_fce680ab2cc467b6e072b8b5df1996b2
 
