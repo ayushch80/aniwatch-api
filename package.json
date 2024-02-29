@@ -3,7 +3,6 @@
   "version": "1.24.1",
   "description": "Node Express API for obtaining anime information from aniwatch",
   "main": "ts-node src/server.ts",
-  "type": "module",
   "scripts": {
     "start": "tsx src/server.ts",
     "dev": "tsx watch src/server.ts",
