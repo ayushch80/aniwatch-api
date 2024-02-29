@@ -1,0 +1,45 @@
+name: Build App
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'latest'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install TypeScript and Webpack CLI
+        run: npm install -g typescript webpack-cli
+
+      - name: Build with Webpack
+        run: npx webpack --config webpack.config.js
+
+      - name: Generate single executable preparation blobs
+        run: node --experimental-sea-config sea-config.json
+
+      - name: Copy node binary to build directory
+        run: cp $(command -v node) build/server
+
+      - name: Inject blob into binary
+        run: npx postject build/server NODE_SEA_BLOB sea-prep.blob --sentinel-fuse NODE_SEA_FUSE_fce680ab2cc467b6e072b8b5df1996b2
+
+      - name: Commit and push build directory
+        run: |
+          git config --global user.name "ayushch80"
+          git config --global user.email "youremail@example.com"
+          git add build
+          git commit -m "Add build directory"
+          git push
