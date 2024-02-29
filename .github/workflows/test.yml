@@ -24,6 +24,9 @@ jobs:
       - name: Install TypeScript, Webpack, and Webpack CLI
         run: npm install -g typescript webpack webpack-cli
 
+      - name: tsc
+        run: tsc
+
       - name: Build with Webpack
         run: npx webpack --config webpack.config.js
 
