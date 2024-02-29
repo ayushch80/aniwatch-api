@@ -9,15 +9,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkouts repo
-        uses: actions/checkout@v3
-
-      - name: Conventional changelog action
-        id: changelog
-        uses: TriPSs/conventional-changelog-action@v3
-        with:
-          skip-on-empty: false
-          github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build app
         - uses: actions/checkout@v4
