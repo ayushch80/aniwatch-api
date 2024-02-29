@@ -75,7 +75,7 @@ jobs:
         run: npm install
 
       - name: Install TypeScript, Webpack, Webpack CLI and Posteject
-        run: npm install -g typescript webpack webpack-cli posteject
+        run: npm install -g typescript webpack webpack-cli postject
 
       - name: Compile TypeScript with tsc
         run: npx tsc
