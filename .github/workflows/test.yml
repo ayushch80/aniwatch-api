@@ -19,10 +19,10 @@ jobs:
           node-version: 'latest'
 
       - name: Install dependencies
-        run: npm i
+        run: npm install
 
-      - name: Install TypeScript and Webpack CLI
-        run: npm install -g typescript webpack-cli
+      - name: Install TypeScript, Webpack, and Webpack CLI
+        run: npm install -g typescript webpack webpack-cli
 
       - name: Build with Webpack
         run: npx webpack --config webpack.config.js
@@ -38,7 +38,7 @@ jobs:
 
       - name: Commit and push build directory
         run: |
-          git config --global user.name "ayushch80"
+          git config --global user.name "Your Name"
           git config --global user.email "youremail@example.com"
           git add build
           git commit -m "Add build directory"
