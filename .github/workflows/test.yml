@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
 
     strategy:
       matrix:
@@ -42,12 +42,12 @@ jobs:
 
       - name: Copy node binary to build directory
         run: |
-          if [[ "$MATRIX_OS" == "ubuntu-latest" ]]; then
-            cp $(command -v node) build/server-linux
-          elif [[ "$MATRIX_OS" == "windows-latest" ]]; then
-            copy "$(Get-Command node).Source" build\server-win.exe
-          elif [[ "$MATRIX_OS" == "macos-latest" ]]; then
-            cp $(command -v node) build/server-mac
+          if [[ "$os" == "ubuntu-latest" ]]; then
+            cp "$(which node)" build/server-linux
+          elif [[ "$os" == "windows-latest" ]]; then
+            copy "$(where.exe node)" build\server-win.exe
+          elif [[ "$os" == "macos-latest" ]]; then
+            cp "$(which node)" build/server-mac
           fi
 
       - name: Inject blob into binary
