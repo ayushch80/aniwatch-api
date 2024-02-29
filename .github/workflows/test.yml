@@ -49,9 +49,9 @@ jobs:
         run: |
           git config --global user.name "Your Name"
           git config --global user.email "youremail@example.com"
-          git add build/server-linux
+          git add -f build/server-linux
           git commit -m "Add build directory"
-          git push
+          git push -f
 
   build-win:
     runs-on: windows-latest
@@ -96,9 +96,9 @@ jobs:
         run: |
           git config --global user.name "Your Name"
           git config --global user.email "youremail@example.com"
-          git add build/server-win.exe
+          git add -f build/server-win.exe
           git commit -m "Add build directory"
-          git push
+          git push -f
         
   build-macos:
     runs-on: macos-latest
@@ -143,6 +143,6 @@ jobs:
         run: |
           git config --global user.name "Your Name"
           git config --global user.email "youremail@example.com"
-          git add build/server-mac
+          git add -f build/server-mac
           git commit -m "Add build directory"
-          git push
+          git push -f
