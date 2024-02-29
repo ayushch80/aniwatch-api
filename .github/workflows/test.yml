@@ -93,7 +93,8 @@ jobs:
         run: signtool/signtool remove /s server-win.exe
 
       - name: Inject blob into binary
-        run: postject build/server-win.exe NODE_SEA_BLOB sea-prep.blob --sentinel-fuse NODE_SEA_FUSE_fce680ab2cc467b6e072b8b5df1996b2
+        run: |
+            runas /user:Administrator postject build/server-win.exe NODE_SEA_BLOB sea-prep.blob --sentinel-fuse NODE_SEA_FUSE_fce680ab2cc467b6e072b8b5df1996b2
 
       - name: Commit and push build directory
         run: |
