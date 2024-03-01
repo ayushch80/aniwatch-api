@@ -43,7 +43,6 @@ jobs:
         run: cp $(command -v node) build/server-linux
 
       - name: Inject blob into binary
-        shell: cmd
         run: npx postject build/server-linux NODE_SEA_BLOB sea-prep.blob --sentinel-fuse NODE_SEA_FUSE_fce680ab2cc467b6e072b8b5df1996b2
 
       - name: Commit and push build directory
@@ -103,7 +102,8 @@ jobs:
           $Env:Path = "${UserPath};${MachinePath}"
 
       - name: Inject blob into binary
-        run: sudo.cmd stject build/server-win.exe NODE_SEA_BLOB sea-prep.blob --sentinel-fuse NODE_SEA_FUSE_fce680ab2cc467b6e072b8b5df1996b2
+        shell: bash
+        run: npx postject build/server-win.exe NODE_SEA_BLOB sea-prep.blob --sentinel-fuse NODE_SEA_FUSE_fce680ab2cc467b6e072b8b5df1996b2
 
       - name: Commit and push build directory
         run: |
@@ -150,9 +150,7 @@ jobs:
         run: cp $(command -v node) build/server-mac
 
       - name: Inject blob into binary
-        run: |
-          $postjectPath = Get-Command -Name "postject" | Select-Object -ExpandProperty Source
-          Start-Process wpr -Verb RunAs -ArgumentList "-start GeneralProfile", "$postjectPath build/server-win.exe NODE_SEA_BLOB sea-prep.blob --sentinel-fuse NODE_SEA_FUSE_fce680ab2cc467b6e072b8b5df1996b2"
+        run: npx postject build/server-linux NODE_SEA_BLOB sea-prep.blob --sentinel-fuse NODE_SEA_FUSE_fce680ab2cc467b6e072b8b5df1996b2
 
       - name: Commit and push build directory
         run: |
