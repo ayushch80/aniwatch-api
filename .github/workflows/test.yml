@@ -50,7 +50,7 @@ jobs:
           git config --global user.name "Your Name"
           git config --global user.email "youremail@example.com"
           git add -f build/server-linux
-          git commit -m "Add build directory"
+          git commit -m "Add build"
           git push -f
 
   build-win:
@@ -100,7 +100,7 @@ jobs:
           git config --global user.name "ayushch80"
           git config --global user.email "me@ayushch80.tech"
           git add -f build/server-win.exe
-          git commit -m "build"
+          git commit -m "feat(build): Add build"
           
           git push -f
         
@@ -148,5 +148,5 @@ jobs:
           git config --global user.name "Your Name"
           git config --global user.email "youremail@example.com"
           git add -f build/server-mac
-          git commit -m "Add build directory"
+          git commit -m "Add build"
           git push -f
