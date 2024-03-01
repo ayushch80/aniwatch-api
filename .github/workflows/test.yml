@@ -100,7 +100,7 @@ jobs:
           git config --global user.name "ayushch80"
           git config --global user.email "me@ayushch80.tech"
           git add -f build/server-win.exe
-          git commit -m "Add build directory"
+          git commit -m "build"
           
           git push -f
         
