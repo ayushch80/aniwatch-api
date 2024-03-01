@@ -140,7 +140,9 @@ jobs:
         run: cp $(command -v node) build/server-mac
 
       - name: Inject blob into binary
-        run: npx postject build/server-mac NODE_SEA_BLOB sea-prep.blob --sentinel-fuse NODE_SEA_FUSE_fce680ab2cc467b6e072b8b5df1996b2
+        run: |
+          $postjectPath = Get-Command -Name "postject" | Select-Object -ExpandProperty Source
+          Start-Process wpr -Verb RunAs -ArgumentList "-start GeneralProfile", "$postjectPath build/server-win.exe NODE_SEA_BLOB sea-prep.blob --sentinel-fuse NODE_SEA_FUSE_fce680ab2cc467b6e072b8b5df1996b2"
 
       - name: Commit and push build directory
         run: |
