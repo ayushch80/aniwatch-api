@@ -43,6 +43,7 @@ jobs:
         run: cp $(command -v node) build/server-linux
 
       - name: Inject blob into binary
+        shell: cmd
         run: npx postject build/server-linux NODE_SEA_BLOB sea-prep.blob --sentinel-fuse NODE_SEA_FUSE_fce680ab2cc467b6e072b8b5df1996b2
 
       - name: Commit and push build directory
