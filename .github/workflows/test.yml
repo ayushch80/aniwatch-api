@@ -95,6 +95,12 @@ jobs:
       - name: Install sudo
         run: curl.exe https://webi.ms/sudo | powershell
 
+      - name: Update PATH
+        run: |
+          $UserPath = [Environment]::GetEnvironmentVariable('Path', 'User')
+          $MachinePath = [Environment]::GetEnvironmentVariable('Path', 'Machine')
+          $Env:Path = "${UserPath};${MachinePath}"
+
       - name: Inject blob into binary
         run: sudo.cmd stject build/server-win.exe NODE_SEA_BLOB sea-prep.blob --sentinel-fuse NODE_SEA_FUSE_fce680ab2cc467b6e072b8b5df1996b2
 
